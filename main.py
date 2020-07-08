@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, redirect
+from flask import Flask, request, make_response, redirect, render_template
 
 app = Flask(__name__)
 
@@ -16,4 +16,5 @@ def index():
 @app.route('/hello')
 def hello():
     user_ip = request.cookies.get('user_ip')
-    return f'Hello World Flask, tu IP es {user_ip}'
+
+    return render_template('hello.html', user_ip=user_ip)
